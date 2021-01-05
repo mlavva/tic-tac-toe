@@ -16,12 +16,13 @@ import java.util.UUID;
 public class GameService {
     public final static int BOARD_SIZE = 3;
 
-    public Game  createGame(Player player) {
+    public Game createGame(Player player) {
         Game game = new Game();
         game.setBoard(new int[BOARD_SIZE][BOARD_SIZE]);
         game.setGameId(UUID.randomUUID().toString());
         game.setPlayer1(player);
         game.setGameStatus(GameStatus.NEW);
+        GameStorage.getInstance().setGame(game);
         return game;
     }
 
